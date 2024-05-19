@@ -7,23 +7,24 @@ module top #(
             T_DATA_RATIO = 3,
             T_WIDTH_RATIO = $clog2(T_DATA_RATIO)
 )(
-  input  clk,
-  input  rst_n,
+  input  logic clk,
+  input  logic rst_n,
 
-  input  [T_DATA_WIDTH-1:0] s_data      [T_DATA_RATIO-1:0],
-  input                     s_last    [T_DATA_RATIO-1:0],
-  input                     s_valid,
-  output                    s_ready,
+  input  logic [T_DATA_WIDTH-1:0] s_data   [T_DATA_RATIO-1:0],
+  input  logic                    s_last   [T_DATA_RATIO-1:0],
+  input  logic                    s_valid,
+  output logic                    s_ready,
 
-  output [T_DATA_WIDTH-1:0] upsized   [T_DATA_RATIO-1:0],
-  output [T_WIDTH_RATIO:0]  u_keep,
-  output                    u_last,
-  output                    u_valid,
-  input                     u_ready,
+  output logic [T_DATA_WIDTH-1:0] upsized  [T_DATA_RATIO-1:0],
+  output logic [T_WIDTH_RATIO:0]  u_keep,
+  output logic                    u_last,
+  output logic                    u_valid,
+  input  logic                    u_ready,
 
-  output [T_DATA_WIDTH-1:0] downsized,
-  output                    d_last,
-  output                    d_valid
+  output logic [T_DATA_WIDTH-1:0] downsized,
+  output logic                    d_last,
+  output logic                    d_valid,
+  input  logic                    d_ready
 );
 
   assign d_valid = '0;
