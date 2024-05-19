@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2024 Egor Guslyancev <electromagneticcyclone@disroot.org>
+#
+# SPDX-License-Identifier: Unlicense
+
+# Quartus files
+*.flock
+output_files
+db
+incremental_db
