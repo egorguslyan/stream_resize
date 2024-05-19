@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2024 Egor Guslyancev <electromagneticcyclone@disroot.org>
+#
+# SPDX-License-Identifier: Unlicense
+
+* Stream upsize
+
+** expand_bits
+
+Используется для включения `value` младших бит, чтобы затем пропускать к `m_keep_o`.
+
+#+begin_src systemverilog
+
+function [T_DATA_RATIO-1:0] expand_bits;
+  input [T_WIDTH_RATIO:0] value;
+  integer i;
+  begin
+    expand_bits = 0;
+    for (i = 0; (i < value) && (i < T_DATA_RATIO); i = i + 1)
+      expand_bits[i] = 1'b1;
+  end
+endfunction
+
+#+end_src
+
+** Готовность, валидность
+
+Модуль готов принимать данные, если на выходе нет валидных данных. Данные автоматически становятся невалидными, если мастер нода успела их прочитать.

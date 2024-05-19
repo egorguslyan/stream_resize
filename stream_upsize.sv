@@ -54,6 +54,7 @@ module stream_upsize #(
       m_data_o[keep_counter] <= s_data_i;
     end else if (m_ready_i) begin
       m_valid_o <= 0;
+      keep_counter <= 0;
     end
   end
 

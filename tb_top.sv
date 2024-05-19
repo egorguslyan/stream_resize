@@ -68,27 +68,27 @@ module tb_top;
   );
 
   initial begin
-    u_ready = 'b1;
-    d_ready = 'b1;
-    s_valid = 'b0;
+    u_ready   = 'b1;
+    d_ready   = 'b1;
+    s_valid   = 'b0;
     @(posedge ARESETn);
     @(posedge ACLK);
-    s_valid = 'b1;
-    s_last  = 'b0;
-    s_data  = 'h1;
+    s_valid   = 'b1;
+    s_last[0] = 'b0;
+    s_data[0] = 'h1;
     @(posedge ACLK);
-    s_data  = 'h2;
+    s_data[0] = 'h2;
     @(posedge ACLK);
-    s_last  = 'b1;
-    s_data  = 'h3;
+    s_last[0] = 'b1;
+    s_data[0] = 'h3;
     @(posedge ACLK);
-    s_last  = 'b0;
-    s_data  = 'ha;
+    s_last[0] = 'b0;
+    s_data[0] = 'ha;
     @(posedge ACLK);
-    s_last  = 'b1;
-    s_data  = 'hb;
+    s_last[0] = 'b1;
+    s_data[0] = 'hb;
     @(posedge ACLK);
-    s_valid = 'b0;
+    s_valid   = 'b0;
     forever $stop();
   end
 
